@@ -8,17 +8,16 @@ import AllTeams from './components/AllTeams';
 function Teams() {
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    const apiKey = import.meta.env.VITE_API_KEY;
     //GET TEAMS INFO
     useEffect(() => {
         setLoading(true);
         const fetchData = async () => {
-            const url = 'https://free-nba.p.rapidapi.com/teams?page=0';
+            const url = 'https://api.balldontlie.io/v1/teams';
             const options = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': 'YOUR_API_KEY',
-                    'X-RapidAPI-Host': 'free-nba.p.rapidapi.com',
+                    Authorization: `${apiKey}`,
                 },
             };
 
